@@ -1,3 +1,7 @@
+### The Mist has not yet finished making our changes. This version of Ultraviolet is not yet password protected!
+
+
+
 <p align="center"><img src="https://raw.githubusercontent.com/titaniumnetwork-dev/ultraviolet-static/main/uv.png" height="200">
 </p>
 
