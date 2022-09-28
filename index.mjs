@@ -21,9 +21,19 @@ app.get("/", (req, res) => {
     else {
       let step1 = new Buffer.from(auth_Stuff.split(" ")[1], 'base64')
       let step2 = step1.toString().split(":")
-      if (step2[0] == 'admin' && step2[1] == 'admin') {
+      if (step2[0] == process.env.NAME_ADMIN && step2[1] == process.env.PASS_ADMIN) {
         console.log("New login: admin")
         res.cookie('user', 'admin', { signed: true })
+        res.sendFile(process.cwd() + "/static/index.html")
+      }
+      else if (step2[0] == process.env.NAME_TIER1 && step2[1] == process.env.PASS_TIER1) {
+        console.log("New login: tier 1")
+        res.cookie('user', 'tier 1', { signed: true })
+        res.sendFile(process.cwd() + "/static/index.html")
+      }
+      else if (step2[0] == process.env.NAME_TIER2 && step2[1] == process.env.PASS_TIER2) {
+        console.log("New login: tier 2")
+        res.cookie('user', 'tier 2', { signed: true })
         res.sendFile(process.cwd() + "/static/index.html")
       }
       else {
@@ -35,8 +45,16 @@ app.get("/", (req, res) => {
   else {
     if (req.signedCookies.user=='admin') {
       console.log("Returning login: admin")
-        res.sendFile(process.cwd() + "/static/index.html")
-      }
+      res.sendFile(process.cwd() + "/static/index.html")
+    }
+    else if (req.signedCookies.user=='tier 1') {
+      console.log("Returning login: tier 1")
+      res.sendFile(process.cwd() + "/static/index.html")
+    }
+    else if (req.signedCookies.user=='tier 2') {
+      console.log("Returning login: tier 2")
+      res.sendFile(process.cwd() + "/static/index.html")
+    }
     else {
         res.setHeader("WWW-Authenticate", "Basic")
         res.sendStatus(401)
