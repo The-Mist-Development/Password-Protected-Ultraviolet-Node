@@ -75,6 +75,8 @@ server.on('request', (req, res) => {
 });
 
 server.on('upgrade', (req, socket, head) => {
+  console.log(req.headers)
+  if (!req.headers.cookie.startsWith("user=")) return socket.end();
 	if (bare.shouldRoute(req, socket, head)) {
 		bare.routeUpgrade(req, socket, head);
 	} else {
