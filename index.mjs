@@ -36,7 +36,7 @@ app.get("/", (req, res) => {
       else if (step2[0] == process.env.NAME_TIER2 && step2[1] == process.env.PASS_TIER2) {
         console.log("[EXPRESS] New login: tier 2")
         res.cookie('user', 'tier 2', { signed: true })
-        res.sendFile(process.cwd() + "/static/index.html")
+        res.redirect(process.env.TIER2REDIRECT)
       }
       else {
         res.setHeader("WWW-Authenticate", "Basic")
@@ -69,6 +69,7 @@ app.use(express.static(process.cwd() + "/static"))
 const server = http.createServer();
 
 server.on('request', (req, res) => {
+  //console.log(req.headers)
   if (bare.shouldRoute(req)) {
 		bare.routeRequest(req, res);
 	} else {
