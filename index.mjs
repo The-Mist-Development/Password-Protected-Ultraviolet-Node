@@ -36,7 +36,7 @@ app.get("/", (req, res) => {
       else if (step2[0] == process.env.NAME_TIER2 && step2[1] == process.env.PASS_TIER2) {
         console.log("[EXPRESS] New login: tier 2")
         res.cookie('user', 'tier 2', { signed: true })
-        res.redirect(process.env.TIER2REDIRECT)
+        res.sendFile(process.cwd() + "/static/showdown.html")
       }
       else {
         res.setHeader("WWW-Authenticate", "Basic")
@@ -55,7 +55,7 @@ app.get("/", (req, res) => {
     }
     else if (req.signedCookies.user=='tier 2') {
       console.log("[EXPRESS] Returning login: tier 2")
-      res.sendFile(process.cwd() + "/static/index.html")
+      res.sendFile(process.cwd() + "/static/showdown.html")
     }
     else {
         res.setHeader("WWW-Authenticate", "Basic")
