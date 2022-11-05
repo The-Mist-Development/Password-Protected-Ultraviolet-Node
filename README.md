@@ -1,6 +1,23 @@
-### The Mist has not yet finished making our changes. This version of Ultraviolet is not yet password protected!
+# Password-Protected-Ultraviolet-Node
+### A fork of the popular Node.js proxy Ultraviolet, but password protected. 
 
+This code works to some extent. In the `index.mjs` file, we've added a login system which works with cookies, and restricts access to the main page and proxy websockets. We haven't figured out how to use the same cookies to restrict access to the rest of the proxy though. 
 
+We have three login 'accounts' in the source, but you can modify that to suit your needs. 
+
+## Bare minimum setup steps
+
+- Make sure you're able to set environment variables - through a `.env` file or other, depending on your environment. If you're physically running `node index.js` then you'll probably have to modify the code. Use the [dotenv](https://www.npmjs.com/package/dotenv) package. You could also define your secrets in `index.mjs` (bad idea), or another type of config file provided that you can import the values.
+
+- Define the environment variable `COOKIESALT`.
+
+- Define at least one username and password pair using environment variables. For example, we use `process.env.NAME_ADMIN` and `process.env.PASS_ADMIN`.
+
+## Explanations
+
+Currently, the accounts `ADMIN` and `TIER1` that we have implemented are identical. The account `TIER2` sends a different page within the `/static` directory to the user, which happens to be a redirect to proxy a specific site. The account `TIER2` has no restrictions on what routes it can/cannot access, other than being served a different home page. We haven't published the changes we've made to the `static` module. 
+
+### The original proxy's README is below.
 
 <p align="center"><img src="https://raw.githubusercontent.com/titaniumnetwork-dev/ultraviolet-static/main/uv.png" height="200">
 </p>
