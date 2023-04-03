@@ -19,7 +19,7 @@ Currently, the accounts `ADMIN` and `TIER1` that we have implemented are identic
 
 ### The original proxy's README is below.
 
-<p align="center"><img src="https://raw.githubusercontent.com/titaniumnetwork-dev/ultraviolet-static/main/uv.png" height="200">
+<p align="center"><img src="https://raw.githubusercontent.com/titaniumnetwork-dev/Ultraviolet-Static-Archive/main/uv.png" height="200">
 </p>
 
 <h1 align="center">Ultraviolet-Node</h1>
